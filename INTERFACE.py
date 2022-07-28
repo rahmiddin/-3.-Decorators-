@@ -1,4 +1,4 @@
-from logger import multiply
+from logger import parametrized_decor
 import requests
 
 
@@ -22,7 +22,7 @@ class FlatIterator:
         return self.nested_list[self.cursor]
 
 
-@multiply('C:/Users/rahmi/Documents/PycharmProjects/pythonProject/INTERFACE')
+@parametrized_decor('C:/Users/rahmi/Documents/PycharmProjects/pythonProject/INTERFACE')
 def flat_generator(my_list):
     for sub_list in my_list:
         for elem in sub_list:

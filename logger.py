@@ -23,7 +23,7 @@ def loger(functions):
     '''
 
 
-def multiply(url):
+def parametrized_decor(url):
     
     def loger_with_url(functions):
         @wraps(functions)
@@ -32,7 +32,10 @@ def multiply(url):
                 file.write(f'Была запушена функция {functions.__name__}' + '\n')
                 file.write(f'Время и дата: {datetime.datetime.now()}' + '\n')
                 file.write(f'Аргументы: {*args, *kwargs}' + '\n')
-                file.write(f'Возврашаемое значение: {functions(*args, **kwargs)}')
-                return args, kwargs
+                result = functions(*args, **kwargs)
+                file.write(f'Возврашаемое значение: {result}' + '\n')
+                return result
+            
         return time_log
+    
     return loger_with_url
